@@ -46,6 +46,16 @@
   .greet .big-avatar { display:flex; align-items:center; justify-content:center; width:64px; height:64px;
     border-radius:50%; background:#2f9bff; color:#fff; font-size:26px; font-weight:800; flex-shrink:0; }
   .greet p { color:#6b6f7a; font-size:15px; margin-top:4px; }
+  /* game tiles */
+  .games { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px; }
+  .tile { display:block; background:#fff; border-radius:12px; overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,.08); }
+  .tile:hover { box-shadow:0 4px 14px rgba(0,0,0,.14); }
+  .tile .cover { height:110px; display:flex; align-items:center; justify-content:center; font-size:46px;
+    background:linear-gradient(135deg,#7c3aed,#3b82f6); }
+  .tile .meta { padding:12px 14px 14px; }
+  .tile h3 { font-size:16px; font-weight:800; }
+  .tile p { color:#6b6f7a; font-size:13px; margin-top:3px; }
   @media (max-width:760px){
     .topnav { display:none; }
     .sidebar { display:none; }
@@ -92,13 +102,26 @@
     </div>
 
     <div class="card">
+      <h2>Games</h2>
+      <div class="games">
+        <a class="tile" href="prism/">
+          <div class="cover">💬</div>
+          <div class="meta">
+            <h3>Prism</h3>
+            <p>Chat with friends. Free, no nitro.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>Friends<span class="count">(0)</span></h2>
       <p class="empty">No friends here yet.</p>
     </div>
 
     <div class="card">
-      <h2>Continue Playing<span class="count">(0 games)</span></h2>
-      <div class="empty-panel">No games yet</div>
+      <h2>Continue Playing</h2>
+      <div class="empty-panel">You haven't played any games yet.</div>
     </div>
 
     <div class="card">
