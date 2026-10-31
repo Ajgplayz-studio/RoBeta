@@ -15,9 +15,16 @@
   .leave .mark { display:flex; align-items:center; justify-content:center; width:24px; height:24px;
     border-radius:7px; background:#2f9bff; color:#fff; font-size:14px; font-weight:800;
     transform:rotate(-6deg); }
-  .warn-pill { position:fixed; top:12px; left:50%; transform:translateX(-50%); z-index:15;
-    background:#e74c3c; color:#fff; font-size:13px; font-weight:800; padding:8px 14px;
-    border-radius:999px; box-shadow:0 4px 14px rgba(0,0,0,.3); white-space:nowrap; }
+  /* centered warning popup */
+  .popup-overlay { position:fixed; inset:0; z-index:40; background:rgba(0,0,0,.6);
+    display:flex; align-items:center; justify-content:center; padding:20px; }
+  .popup { background:#1a1d29; color:#fff; border-radius:14px; padding:28px 26px;
+    max-width:360px; width:100%; text-align:center; box-shadow:0 12px 40px rgba(0,0,0,.5); }
+  .popup h2 { font-size:22px; font-weight:800; margin-bottom:12px; }
+  .popup p { color:#c9ccd6; font-size:15px; line-height:1.6; margin-bottom:20px; }
+  .popup button { padding:12px 38px; border:none; border-radius:999px; background:#2f9bff;
+    color:#fff; font-size:16px; font-weight:800; font-family:inherit; cursor:pointer; }
+  .popup button:hover { background:#1f8ae8; }
   /* roblox-type menu */
   .overlay { position:fixed; inset:0; z-index:30; background:rgba(0,0,0,.5); display:none; }
   .overlay.open { display:block; }
@@ -34,13 +41,11 @@
   .menu .leave-btn { background:#e74c3c; }
   .menu .leave-btn:hover { background:#c0392b; }
   iframe { display:block; width:100vw; height:100vh; border:none; }
-  @media (max-width:560px){ .warn-pill { top:56px; font-size:12px; padding:6px 12px; } }
 </style>
 </head>
 <body>
 
 <button class="leave" id="logoBtn" title="Menu"><span class="mark">R</span>RoBeta</button>
-<div class="warn-pill">⚠️ NOT for mobile</div>
 <div class="overlay" id="overlay"></div>
 <nav class="menu" id="menu">
   <h2>RoBeta</h2>
@@ -50,6 +55,14 @@
   <button class="leave-btn" id="leaveBtn">Leave</button>
 </nav>
 <iframe src="https://knockdown.foxcorpgames.workers.dev/" title="Knockdown" allow="pointer-lock; fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <h2>⚠️ NOT for mobile</h2>
+    <p>Knockdown is NOT for mobile. Please play on a PC or VR headset.</p>
+    <button id="okBtn">OK</button>
+  </div>
+</div>
 
 <script>
   var menu = document.getElementById('menu');
@@ -63,6 +76,7 @@
   overlay.addEventListener('click', closeMenu);
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { closeMenu(); } });
   document.getElementById('leaveBtn').addEventListener('click', function(){ location.href = '../'; });
+  document.getElementById('okBtn').addEventListener('click', function(){ document.getElementById('popup').style.display = 'none'; });
 </script>
 
 </body>
