@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knockdown - RoBeta</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body { font-family:"Segoe UI", system-ui, -apple-system, sans-serif; overflow:hidden; }
+  .leave { position:fixed; top:12px; left:12px; z-index:20; display:flex; align-items:center; gap:8px;
+    padding:8px 14px 8px 10px; border:none; border-radius:999px; background:rgba(20,22,31,.85); color:#fff;
+    font-weight:800; font-size:15px; font-family:inherit; cursor:pointer; }
+  .leave:hover { background:rgba(20,22,31,1); }
+  .leave .mark { display:flex; align-items:center; justify-content:center; width:24px; height:24px;
+    border-radius:7px; background:#2f9bff; color:#fff; font-size:14px; font-weight:800;
+    transform:rotate(-6deg); }
+  .warn-pill { position:fixed; top:12px; left:50%; transform:translateX(-50%); z-index:15;
+    background:#e74c3c; color:#fff; font-size:13px; font-weight:800; padding:8px 14px;
+    border-radius:999px; box-shadow:0 4px 14px rgba(0,0,0,.3); white-space:nowrap; }
+  /* roblox-type menu */
+  .overlay { position:fixed; inset:0; z-index:30; background:rgba(0,0,0,.5); display:none; }
+  .overlay.open { display:block; }
+  .menu { position:fixed; top:0; left:0; z-index:31; width:280px; height:100%;
+    background:#1a1d29; color:#fff; padding:20px; display:none; flex-direction:column; gap:10px;
+    box-shadow:4px 0 24px rgba(0,0,0,.4); }
+  .menu.open { display:flex; }
+  .menu h2 { font-size:20px; font-weight:800; margin-bottom:8px; }
+  .menu .game { color:#8a8f9e; font-size:14px; margin-bottom:14px; }
+  .menu button, .menu a { display:block; width:100%; padding:12px 14px; border:none; border-radius:8px;
+    background:#2a2d3d; color:#fff; font-size:15px; font-weight:700; font-family:inherit;
+    text-align:left; cursor:pointer; text-decoration:none; }
+  .menu button:hover, .menu a:hover { background:#3a3d4d; }
+  .menu .leave-btn { background:#e74c3c; }
+  .menu .leave-btn:hover { background:#c0392b; }
+  iframe { display:block; width:100vw; height:100vh; border:none; }
+  @media (max-width:560px){ .warn-pill { top:56px; font-size:12px; padding:6px 12px; } }
+</style>
+</head>
+<body>
+
+<button class="leave" id="logoBtn" title="Menu"><span class="mark">R</span>RoBeta</button>
+<div class="warn-pill">⚠️ NOT for mobile</div>
+<div class="overlay" id="overlay"></div>
+<nav class="menu" id="menu">
+  <h2>RoBeta</h2>
+  <div class="game">Playing: Knockdown</div>
+  <button id="resumeBtn">Resume</button>
+  <a href="https://knockdown.foxcorpgames.workers.dev/" target="_blank" rel="noopener">Open Knockdown in new tab</a>
+  <button class="leave-btn" id="leaveBtn">Leave</button>
+</nav>
+<iframe src="https://knockdown.foxcorpgames.workers.dev/" title="Knockdown" allow="pointer-lock; fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+
+<script>
+  var menu = document.getElementById('menu');
+  var overlay = document.getElementById('overlay');
+  function openMenu(){ menu.classList.add('open'); overlay.classList.add('open'); }
+  function closeMenu(){ menu.classList.remove('open'); overlay.classList.remove('open'); }
+  document.getElementById('logoBtn').addEventListener('click', function(){
+    if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+  });
+  document.getElementById('resumeBtn').addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { closeMenu(); } });
+  document.getElementById('leaveBtn').addEventListener('click', function(){ location.href = '../'; });
+</script>
+
+</body>
+</html>
