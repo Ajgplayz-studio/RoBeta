@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoBeta - Home</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Segoe UI", system-ui, -apple-system, sans-serif; background:#f2f4f5; color:#1a1a1a; }
+  a { text-decoration:none; color:inherit; cursor:pointer; }
+  /* top bar */
+  .topbar { position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:24px;
+    height:56px; padding:0 20px; background:#14161f; color:#fff; }
+  .logo { display:flex; align-items:center; gap:9px; font-size:21px; font-weight:800; letter-spacing:-.5px; }
+  .mark { display:flex; align-items:center; justify-content:center; width:30px; height:30px;
+    border-radius:8px; background:#2f9bff; color:#fff; font-size:18px; font-weight:800;
+    transform:rotate(-6deg); }
+  .topnav { display:flex; gap:22px; font-size:15px; font-weight:600; color:#c9ccd6; }
+  .topnav a:hover { color:#fff; }
+  .search { flex:1; max-width:420px; margin-left:auto; }
+  .search input { width:100%; height:36px; padding:0 14px; border:none; border-radius:8px;
+    background:#2a2d3d; color:#fff; font-size:14px; font-family:inherit; outline:none; }
+  .search input::placeholder { color:#8a8f9e; }
+  .topicons { display:flex; align-items:center; gap:18px; font-size:18px; }
+  .avatar { display:flex; align-items:center; justify-content:center; width:34px; height:34px;
+    border-radius:50%; background:#2f9bff; font-size:15px; font-weight:800; }
+  /* layout */
+  .layout { display:flex; align-items:flex-start; }
+  .sidebar { position:sticky; top:56px; width:210px; flex-shrink:0; padding:14px 10px; }
+  .sidebar a { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:8px;
+    font-size:15px; font-weight:600; color:#3a3a3a; }
+  .sidebar a:hover { background:#e4e7ea; }
+  .sidebar a.active { background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+  .sidebar .ic { font-size:18px; width:24px; text-align:center; }
+  /* main */
+  main { flex:1; min-width:0; max-width:980px; padding:26px 28px 60px; }
+  h1 { font-size:28px; font-weight:800; margin-bottom:20px; }
+  .card { background:#fff; border-radius:12px; padding:22px 24px; margin-bottom:18px;
+    box-shadow:0 1px 4px rgba(0,0,0,.08); }
+  .card h2 { font-size:18px; font-weight:800; margin-bottom:12px; }
+  .card h2 .count { color:#8a8f9e; font-weight:600; font-size:14px; margin-left:6px; }
+  .empty { color:#6b6f7a; font-size:15px; line-height:1.6; }
+  .empty-panel { border:2px dashed #d4d7dc; border-radius:10px; padding:38px 20px;
+    text-align:center; color:#8a8f9e; font-size:15px; font-weight:600; }
+  .greet { display:flex; align-items:center; gap:16px; }
+  .greet .big-avatar { display:flex; align-items:center; justify-content:center; width:64px; height:64px;
+    border-radius:50%; background:#2f9bff; color:#fff; font-size:26px; font-weight:800; flex-shrink:0; }
+  .greet p { color:#6b6f7a; font-size:15px; margin-top:4px; }
+  @media (max-width:760px){
+    .topnav { display:none; }
+    .sidebar { display:none; }
+    main { padding:20px 16px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="logo" href="#"><span class="mark">R</span>RoBeta</a>
+  <nav class="topnav">
+    <a>Discover</a>
+    <a>Marketplace</a>
+    <a>Create</a>
+  </nav>
+  <div class="search"><input type="text" placeholder="Search"></div>
+  <div class="topicons">
+    <a title="Notifications">🔔</a>
+    <a title="Settings">⚙️</a>
+    <a class="avatar" title="Profile">P</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <a class="active"><span class="ic">🏠</span>Home</a>
+    <a><span class="ic">👤</span>Profile</a>
+    <a><span class="ic">👥</span>Friends</a>
+    <a><span class="ic">💬</span>Messages</a>
+    <a><span class="ic">🧍</span>Avatar</a>
+    <a><span class="ic">🎒</span>Inventory</a>
+    <a><span class="ic">👥</span>Groups</a>
+    <a><span class="ic">🛒</span>Catalog</a>
+  </aside>
+
+  <main>
+    <div class="card greet">
+      <div class="big-avatar">P</div>
+      <div>
+        <h2 style="margin-bottom:0;">Welcome to RoBeta</h2>
+        <p>Your home screen. Games will show up here once there are some.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Friends<span class="count">(0)</span></h2>
+      <p class="empty">No friends here yet.</p>
+    </div>
+
+    <div class="card">
+      <h2>Continue Playing<span class="count">(0 games)</span></h2>
+      <div class="empty-panel">No games yet</div>
+    </div>
+
+    <div class="card">
+      <h2>Recommended For You</h2>
+      <div class="empty-panel">Nothing here yet. Check back soon.</div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
